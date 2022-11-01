@@ -12,6 +12,8 @@ Go to your _Project Setting -> Plugins_ and enable this plugin.
 # How to use
 Click on your __Box/Grid Container__ node, you should see a new property right below __Control__ category labeled _Assign focus neighbour_ and a __Run__ button next to it.
 
+![Screenshot_20221101_184732](https://user-images.githubusercontent.com/68549456/199259585-0986f088-7703-480d-85df-7918542956a0.jpg)
+
 Click on that button, if the text changes into _Done_, go ahead and test it out.
 
 Please open an issue if it doesn't.
