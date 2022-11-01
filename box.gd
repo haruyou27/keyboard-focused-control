@@ -26,6 +26,7 @@ func _assign():
 	for node in nodes:
 		node.focus_neighbour_left = '../' + nodes[i-1].name
 		node.focus_neighbour_right = '../' + nodes[0-size+i+1].name
+		#I use negative index to avoid index out of bound.
 		
 		node.focus_neighbour_top = node.focus_neighbour_left
 		node.focus_neighbour_bottom = node.focus_neighbour_right
