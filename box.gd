@@ -16,7 +16,7 @@ func _assign():
 	
 	var i := 0
 	for node in nodes:
-		if not node is Control:
+		if not node is Control or node.focus_mode == 0:
 			nodes.remove(i)
 		else:
 			i += 1
