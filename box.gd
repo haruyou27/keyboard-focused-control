@@ -16,10 +16,9 @@ func _assign():
 	
 	var i := 0
 	for node in nodes:
-		if not node is Control or node.focus_mode == 0:
+		if (not node is Control) or node.focus_mode == 0:
 			nodes.remove(i)
-		else:
-			i += 1
+		i += 1
 	
 	i = 0
 	var size := nodes.size()
