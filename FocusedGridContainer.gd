@@ -31,12 +31,12 @@ func assign():
 			nodes.append(node)
 
 	for node in nodes:
-		var next :String = '../' + nodes[i - 1].name
+		var next :String = '../' + nodes[0 - nodes.size() + i + 1].name
 		node.focus_neighbour_right = next
 		node.focus_next = next
 		
 		#Use negative index to avoid index out of bounds.
-		var previous :String = '../' + nodes[0 - nodes.size() + i + 1].name
+		var previous :String = '../' + nodes[i - 1].name
 		node.focus_neighbour_left = previous
 		node.focus_previous = previous
 
