@@ -1,4 +1,4 @@
-tool
+ctool
 extends GridContainer
 class_name FocusedGridContainer
 
@@ -17,10 +17,13 @@ func _ready():
 	connect("child_entered_tree", self, '_on_tree_channged')
 	connect("child_exiting_tree", self, "_on_tree_changed")
 	
-func _on_tree_changed():
-	if not queued:
-		queued = true
-		call_deferred('assign')
+func _on_tree_changed(_child):
+	if queued is_queued_for_deletion():
+		#There's no point if it is about to be deleted.
+		return
+
+	queued = true
+	call_deferred('assign')
 		
 func assign():
 	var nodes := []
