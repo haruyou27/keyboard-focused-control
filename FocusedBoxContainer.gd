@@ -5,6 +5,7 @@ class_name FocusedBoxcontainer
 var queued := false
 
 export (bool) var run setget _run
+export (bool) var auto_change
 export (bool) var autostart
 
 func _run(_value):
@@ -14,10 +15,15 @@ func _run(_value):
 func _ready():
 	if autostart:
 		assign()
-	connect("child_entered_tree", self, '_on_tree_channged')
-	connect("child_exiting_tree", self, "_on_tree_changed")
+	if auto_change:
+		connect("child_entered_tree", self, '_on_tree_channged')
+		connect("child_exiting_tree", self, "_on_tree_changed")
 
-func _on_tree_changed():
+func _on_tree_changed(_child):
+	if is_queued_for_deletion():
+		#There's no point if it is about to be deleted.
+		return
+		
 	if not queued:
 		queued = true
 		call_deferred('assign')
