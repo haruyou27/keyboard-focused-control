@@ -2,7 +2,7 @@ tool
 extends BoxContainer
 class_name FocusedBoxcontainer
 
-var queued := false
+var updating := false
 
 export (bool) var run setget _run
 export (bool) var auto_change
@@ -20,11 +20,11 @@ func _ready():
 		connect("child_exiting_tree", self, "_on_tree_changed")
 
 func _on_tree_changed(_child):
-	if queued is_queued_for_deletion():
+	if is_queued_for_deletion():
 		#There's no point if it is about to be deleted.
 		return
 
-	queued = true
+	updating = true
 	call_deferred('assign')
 
 func assign():
@@ -49,4 +49,4 @@ func assign():
 		
 		i += 1
 		
-	queued = false
+	updating = false
